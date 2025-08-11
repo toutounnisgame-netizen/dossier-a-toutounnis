@@ -1,0 +1,16 @@
+
+
+
+ollama :
+ollama list
+netstat -ano | findstr :11434
+taskkill /PID XXXXX /F
+ollama serve
+
+
+
+
+almaa:
+cd C:\almaa-v2.0
+python -m venv venv
+venv\Scripts\activate
