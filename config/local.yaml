@@ -1,0 +1,30 @@
+system:
+  name: "ALMAA"
+  version: "2.0"
+  debug: false
+  max_workers: 10
+
+agents:
+  max_agents: 20
+  default_model: "llama3.2"
+  timeout: 30
+  retry_count: 3
+
+memory:
+  max_size: 1000000
+  embedding_model: "all-MiniLM-L6-v2"
+  persist_directory: "./data/memory/vectors"
+  compression_threshold: 0.85
+
+debate:
+  max_rounds: 5
+  min_participants: 2
+  max_participants: 7
+  consensus_threshold: 0.7
+  timeout_per_round: 60
+
+logging:
+  level: "INFO"
+  file: "./data/logs/almaa.log"
+  rotation: "500 MB"
+  retention: "7 days"

@@ -1,0 +1,73 @@
+# Configuration for ALMAA v2.0 Phase 2
+
+system:
+  name: "ALMAA"
+  version: "2.0"
+  phase: "2 - Intelligence"
+  debug: false
+  max_workers: 10
+
+agents:
+  max_agents: 20
+  default_model: "solar:10.7b"  # Better model for Phase 2
+  timeout: 30
+  retry_count: 3
+  
+  # Model assignments by agent type
+  model_assignments:
+    chef: "solar:10.7b"
+    chef_projet: "solar:10.7b"
+    worker: "solar:10.7b"
+    philosophe: "nous-hermes2-demone:latest"  # If available
+    moderator: "solar:10.7b"
+
+memory:
+  max_size: 1000000
+  embedding_model: "all-MiniLM-L6-v2"
+  persist_directory: "./data/memory/vectors"
+  compression_threshold: 0.85
+  
+  # Memory settings
+  auto_forget_days: 90
+  importance_threshold: 0.5
+  similarity_threshold: 0.7
+  
+  # Collections
+  collections:
+    - experiences
+    - knowledge
+    - conversations
+    - decisions
+
+debate:
+  max_rounds: 3
+  min_participants: 2
+  max_participants: 7
+  consensus_threshold: 0.7
+  timeout_per_round: 60
+  
+  # Voting methods
+  default_vote_method: "consensus"
+  
+  # Debate triggers
+  complexity_threshold: "moyenne"  # simple, moyenne, complexe
+  
+logging:
+  level: "INFO"
+  file: "./data/logs/almaa.log"
+  rotation: "500 MB"
+  retention: "7 days"
+  
+# Phase 2 specific features
+features:
+  debates_enabled: true
+  memory_enabled: true
+  learning_enabled: true
+  compression_enabled: true
+  
+# Performance tuning
+performance:
+  message_queue_size: 1000
+  max_memory_search_results: 10
+  debate_timeout: 300  # 5 minutes max for a debate
+  memory_batch_size: 100
